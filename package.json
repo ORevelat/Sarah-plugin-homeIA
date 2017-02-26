@@ -1,0 +1,14 @@
+{
+  "name": "homeIA",
+  "version": "1.6.1",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "googleapis": "~2.1.5",
+    "google-auth-library": "~0.9.6"
+  },
+  "devDependencies": {
+  }
+}

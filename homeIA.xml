@@ -1,0 +1,372 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="ruleHOMEIA" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+	<rule id="ruleHOMEIA" scope="public">
+    	<tag>out.action=new Object();</tag>
+	<!--
+		out.action._attributes.tts = "Oui, je t'écoute."
+	-->
+	    
+	    <item>SARAH</item>
+	    <item>s'il te plait</item>
+
+    	<item>
+    		<one-of>
+    			<item>
+					<ruleref uri="#PLUGIN_TIME" />
+					<tag>out.action.mode = "TIME"; out.action.cmd = rules.PLUGIN_TIME.cmd;</tag>
+    			</item>
+    			<item>
+    				<ruleref uri="#PLUGIN_COMMAND" />
+    				<tag>out.action.mode = "COMMAND"; out.action.cmd = rules.PLUGIN_COMMAND.cmd</tag>
+    			</item>
+    			<item>
+    				<ruleref uri="#PLUGIN_JOKE" />
+    				<tag>out.action.mode = "JOKE";</tag>
+    			</item>
+    			<item>
+					<ruleref uri="#PLUGIN_CALENDAR" />
+					<tag>out.action.mode = "CALENDAR"; out.action.cmd = rules.PLUGIN_CALENDAR.cmd; out.action.check = rules.PLUGIN_CALENDAR.check;</tag>
+				</item>
+    			<item>
+    				<ruleref uri="#PLUGIN_WEATHER" />
+    				<tag>out.action.mode = "WEATHER"; out.action.date = rules.PLUGIN_WEATHER.date; out.action.period = rules.PLUGIN_WEATHER.period; out.action.zip = rules.PLUGIN_WEATHER.zip;</tag>
+    			</item>
+    			<item>
+    				<ruleref uri="#PLUGIN_JEEDOM" />
+    				<tag>out.action.mode = "JEEDOM"; out.action.element = rules.PLUGIN_JEEDOM.element; out.action.cmd = rules.PLUGIN_JEEDOM.cmd;</tag>
+    			</item>
+    		</one-of>
+    	</item>
+
+	    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/homeIA";</tag>
+	</rule>
+
+	<rule id="PLUGIN_TIME" scope="public">
+	    <one-of>
+			<item>il est quelle heure <tag>out.cmd="time";</tag></item>
+			<item>quelle heure est il <tag>out.cmd="time";</tag></item>
+			<item>quel jour sommes-nous <tag>out.cmd="date";</tag></item>
+			<item>nous sommes quel jour <tag>out.cmd="date";</tag></item>
+			<item>quelle est la date <tag>out.cmd="date";</tag></item>
+	    	<item>quelle semaine sommes nous <tag>out.cmd="week_today";</tag></item>
+	    	<item>nous sommes en quelle semaine <tag>out.cmd="week_today";</tag></item>
+	    	<item>demain quelle semaine serons nous <tag>out.cmd="week_tomorrow";</tag></item>
+	    	<item>demain nous serons en quelle semaine <tag>out.cmd="week_tomorrow";</tag></item>
+	    </one-of>
+	</rule>
+
+	<rule id="PLUGIN_COMMAND" scope="public">
+		<one-of>
+			<item>lance CAUDI<tag>out.cmd="runKodi";</tag></item>
+			<item>démarre CAUDI<tag>out.cmd="runKodi";</tag></item>
+			<item>arrête CAUDI<tag>out.cmd="closeKodi";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="PLUGIN_JOKE" scope="public">
+		<one-of>
+			<item>raconte une blague</item>
+			<item>raconte moi une blague</item>
+			<item>raconte nous une blague</item>
+			<item>une autre blague</item>
+		</one-of>
+	</rule>
+
+	<rule id="PLUGIN_CALENDAR" scope="public">
+	    <tag>out.cmd="PLANNING";</tag>
+	    <tag>out.check="next";</tag>
+
+	    <one-of>
+	      <item>qu'est ce qui est prévu pour</item>
+	      <item>quelle est le planning pour</item>
+	      <item>quelle est le planning de</item>
+	      <item>donne moi le planning pour</item>
+	      <item>donne moi le planning de</item>
+	    </one-of>
+
+	    <item repeat="0-1">
+		    <one-of>
+		      <item>aujourd'hui <tag>out.check="today";</tag></item>
+		      <item>demain <tag>out.check="tomorrow";</tag></item>
+		    </one-of>
+	    </item>
+	</rule>
+
+	<rule id="PLUGIN_WEATHER" scope="public">
+		<one-of>
+			<item>quelle est la météo</item>
+			<item>donne moi la météo</item>
+		</one-of>
+
+		<item repeat="0-1">
+			<ruleref uri="#WEATHER_TRASH"/>
+		</item>
+
+		<item>
+			<one-of>
+			
+				<item>
+					<item repeat="0-1">
+						<ruleref uri="#WEATHER_DATE"/>
+						<tag>out.date=rules.WEATHER_DATE.date</tag>
+					</item>
+
+					<item repeat="0-1">
+						<ruleref uri="#WEATHER_PERIOD"/>
+						<tag>out.period=rules.WEATHER_PERIOD.period</tag>
+					</item>
+
+					<item repeat="0-1">
+						<ruleref uri="#WEATHER_TRASH"/>
+					</item>
+
+					<item repeat="0-1">
+						<ruleref uri="#WEATHER_ZIP"/>
+						<tag>out.zip=rules.WEATHER_ZIP.zip</tag>
+					</item>
+				</item>
+			
+				<item>
+					<item repeat="0-1">
+						<ruleref uri="#WEATHER_ZIP"/>
+						<tag>out.zip=rules.WEATHER_ZIP.zip</tag>
+					</item>
+
+					<item repeat="0-1">
+						<ruleref uri="#WEATHER_TRASH"/>
+					</item>
+
+					<item repeat="0-1">
+						<ruleref uri="#WEATHER_DATE"/>
+						<tag>out.date=rules.WEATHER_DATE.date</tag>
+					</item>
+
+					<item repeat="0-1">
+						<ruleref uri="#WEATHER_PERIOD"/>
+						<tag>out.period=rules.WEATHER_PERIOD.period</tag>
+					</item>
+				</item>
+				
+			</one-of>
+		</item>
+	</rule>
+		
+	<rule id="WEATHER_TRASH" scope="public">
+		<one-of>
+			<item>à</item>
+			<item>de</item>
+			<item>pour</item>
+			<item>pour ce</item>
+			<item>pour cet</item>
+			<item>pour cette</item>
+		</one-of>
+	</rule>
+
+	<rule id="WEATHER_DATE" scope="public">
+		<one-of>
+			<item>aujourd'hui <tag>out.date="0";</tag></item>
+			<item>demain <tag>out.date="1";</tag></item>
+			<item>après demain <tag>out.date="2";</tag></item>
+			<item>lundi <tag>out.date="lundi";</tag></item>
+			<item>mardi <tag>out.date="mardi";</tag></item>
+			<item>mercredi <tag>out.date="mercredi";</tag></item>
+			<item>jeudi <tag>out.date="jeudi";</tag></item>
+			<item>vendredi <tag>out.date="vendredi";</tag></item>
+			<item>samedi <tag>out.date="samedi";</tag></item>
+			<item>dimanche <tag>out.date="dimanche";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="WEATHER_PERIOD" scope="public">
+		<one-of>
+			<item>matin<tag>out.period="morn";</tag></item>
+			<item>en ce moment<tag>out.period="day";</tag></item>
+			<item>dans la journée<tag>out.period="day";</tag></item>
+			<item>après-midi<tag>out.period="day";</tag></item>
+			<item>ce soir<tag>out.period="eve";</tag></item>
+			<item>soir<tag>out.period="eve";</tag></item>
+			<item>cette nuit<tag>out.period="night";</tag></item>
+			<item>dans la nuit<tag>out.period="night";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="WEATHER_ZIP" scope="public">
+		<one-of>
+			<item>Auribeau <tag> out.zip="060070"; </tag></item>
+			<item>Auribeau sur Siagne <tag> out.zip="060070"; </tag></item>
+			<item>la maison <tag> out.zip="060070"; </tag></item>
+			<item>Bordeaux <tag> out.zip="330630"; </tag></item>
+			<item>Brest <tag> out.zip="290190"; </tag></item>
+			<item>Cruzy <tag> out.zip="340920"; </tag></item>
+			<item>Lyon <tag> out.zip="691230"; </tag></item>
+			<item>Marseille <tag> out.zip="130550"; </tag></item>
+			<item>Nisse <tag> out.zip="060880"; </tag></item>
+			<item>Nantes <tag> out.zip="441090"; </tag></item>
+			<item>Paris <tag> out.zip="750560"; </tag></item>
+			<item>Strasbourg <tag> out.zip="674820"; </tag></item>
+			<item>Toulouse <tag> out.zip="315550"; </tag></item>
+			<item>Ussèle <tag> out.zip="192750"; </tag></item>
+			<item>Dormelles <tag> out.zip="771610"; </tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="PLUGIN_JEEDOM" scope="public">
+		<one-of>
+			<item>
+				<ruleref uri="#JEEDOM_LUM_ON"/>
+				<tag>out.element=rules.JEEDOM_LUM_ON.element; out.cmd=rules.JEEDOM_LUM_ON.cmd;</tag>
+			</item>
+			<item>
+				<ruleref uri="#JEEDOM_LUM_OFF"/>
+				<tag>out.element=rules.JEEDOM_LUM_OFF.element; out.cmd=rules.JEEDOM_LUM_OFF.cmd;</tag>
+			</item>
+			<item>
+				<ruleref uri="#JEEDOM_ASK"/>
+				<tag>out.element=rules.JEEDOM_ASK.element; out.cmd=rules.JEEDOM_ASK.cmd;</tag>
+			</item>
+			<item>
+				<ruleref uri="#JEEDOM_VOLET_UP"/>
+				<tag>out.element=rules.JEEDOM_VOLET_UP.element; out.cmd=rules.JEEDOM_VOLET_UP.cmd;</tag>
+			</item>
+			<item>
+				<ruleref uri="#JEEDOM_VOLET_DOWN"/>
+				<tag>out.element=rules.JEEDOM_VOLET_DOWN.element; out.cmd=rules.JEEDOM_VOLET_DOWN.cmd;</tag>
+			</item>
+			<item>
+				<ruleref uri="#JEEDOM_VOLET_STOP"/>
+				<tag>out.element=rules.JEEDOM_VOLET_STOP.element; out.cmd=rules.JEEDOM_VOLET_STOP.cmd;</tag>
+			</item>
+		</one-of>
+	</rule>
+
+	<rule id="JEEDOM_LUM_ON" scope="public">
+		<item>allume la lumière</item>
+
+		<item>
+			<one-of>
+				<item>du bureau<tag>out.cmd="278";</tag></item>
+				<item>de la salle de bain<tag>out.cmd="266";</tag></item>
+				<item>de la chambre des parents<tag>out.cmd="294";</tag></item>
+				<item>des parents<tag>out.cmd="294";</tag></item>
+				<item>de la chambre de théa<tag>out.cmd="272";</tag></item>
+				<item>de théa<tag>out.cmd="272";</tag></item>
+				<item>de la salle à manger<tag>out.cmd="179";</tag></item>
+				<item>du salon<tag>out.cmd="185";</tag></item>
+				<item>de l'entrée<tag>out.cmd="336";</tag></item>
+			</one-of>
+
+			<tag>out.element="lum_on";</tag>
+		</item>
+	</rule>
+
+	<rule id="JEEDOM_LUM_OFF" scope="public">
+		<item>éteind la lumière</item>
+
+		<item>
+			<one-of>
+				<item>du bureau<tag>out.cmd="279";</tag></item>
+				<item>de la salle de bain<tag>out.cmd="267";</tag></item>
+				<item>de la chambre des parents<tag>out.cmd="295";</tag></item>
+				<item>des parents<tag>out.cmd="295";</tag></item>
+				<item>de la chambre de théa<tag>out.cmd="273";</tag></item>
+				<item>de théa<tag>out.cmd="273";</tag></item>
+				<item>de la salle à manger<tag>out.cmd="180";</tag></item>
+				<item>du salon<tag>out.cmd="186";</tag></item>
+				<item>de l'entrée<tag>out.cmd="337";</tag></item>
+			</one-of>
+			<tag>out.element="lum_off";</tag>
+		</item>
+	</rule>
+
+	<rule id="JEEDOM_ASK" scope="public">
+		<item>
+			<one-of>
+				<item>quelle est la température</item>
+				<item>donne moi la température</item>
+			</one-of>
+		</item>
+
+		<item>
+			<one-of>
+				<item>du</item>
+				<item>de</item>
+				<item>de la</item>
+				<item>de la chambre de</item>
+				<item>de la chambre des</item>
+				<item>dans le</item>
+				<item>dans la chambre de</item>
+				<item>dans la chambre des</item>
+			</one-of>
+		</item>
+
+		<item>
+			<one-of>
+				<item>bureau<tag>out.cmd="356";</tag></item>
+				<item>parents<tag>out.cmd="314";</tag></item>
+				<item>théa<tag>out.cmd="318";</tag></item>
+				<item>salon<tag>out.cmd="312";</tag></item>
+				<item>rez de chaussée<tag>out.cmd="231";</tag></item>
+				<item>jardin<tag>out.cmd="322";</tag></item>
+				<item>l'étage<tag>out.cmd="288";</tag></item>
+			</one-of>
+			<tag>out.element="temp";</tag>
+		</item>
+	</rule>
+
+	<rule id="JEEDOM_VOLET_UP" scope="public">
+		<item>
+			<one-of>
+				<item>
+					<item>ouvre le volet</item>
+					<one-of>
+						<item>de la cuisine<tag>out.cmd="202";</tag></item>
+						<item>de la salle à manger<tag>out.cmd="166";</tag></item>
+						<item>du salon<tag>out.cmd="190";</tag></item>
+					</one-of>
+				</item>
+				<item>ouvre les volets de la maison<tag>out.cmd="202;166;190";</tag></item>
+			</one-of>
+
+			<tag>out.element="volet_up";</tag>
+		</item>
+	</rule>
+
+	<rule id="JEEDOM_VOLET_DOWN" scope="public">
+		<item>
+			<one-of>
+				<item>
+					<item>ferme le volet</item>
+					<one-of>
+						<item>de la cuisine<tag>out.cmd="203";</tag></item>
+						<item>de la salle à manger<tag>out.cmd="167";</tag></item>
+						<item>du salon<tag>out.cmd="191";</tag></item>
+					</one-of>
+				</item>
+
+				<item>ferme les volets de la maison<tag>out.cmd="203;167;191";</tag></item>
+			</one-of>
+
+			<tag>out.element="volet_down";</tag>
+		</item>
+	</rule>
+
+	<rule id="JEEDOM_VOLET_STOP" scope="public">
+		<item>
+			<one-of>
+				<item>arrête le volet</item>
+				<item>stop le volet</item>
+			</one-of>
+		</item>
+
+		<item>
+			<one-of>
+				<item>de la cuisine<tag>out.cmd="209";</tag></item>
+				<item>de la salle à manger<tag>out.cmd="173";</tag></item>
+				<item>du salon<tag>out.cmd="197";</tag></item>
+			</one-of>
+
+			<tag>out.element="volet_stop";</tag>
+		</item>
+	</rule>
+
+</grammar>

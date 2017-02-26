@@ -57,9 +57,9 @@
 
 	<rule id="PLUGIN_COMMAND" scope="public">
 		<one-of>
-			<item>lance CAUDI<tag>out.cmd="runKodi";</tag></item>
-			<item>démarre CAUDI<tag>out.cmd="runKodi";</tag></item>
-			<item>arrête CAUDI<tag>out.cmd="closeKodi";</tag></item>
+			<item>lance CAUDI<tag>out.cmd="kodi_on";</tag></item>
+			<item>démarre CAUDI<tag>out.cmd="kodi_on";</tag></item>
+			<item>arrête CAUDI<tag>out.cmd="kodi_off";</tag></item>
 		</one-of>
 	</rule>
 

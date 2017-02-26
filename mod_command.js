@@ -17,18 +17,15 @@ exports.do_main = function(words, data, callback) {
 
 	switch (data.cmd)
 	{
-		case "runKodi":
+		case "kodi_on":
+		case "kodi_off":
 		{
-			toExecute = mod_path + 'runKodi.bat';
-			textTTS = words["kodi_on"];
+			toExecute = mod_path + data.cmd + '.bat';
+			textTTS = words[data.cmd];
 			break;
 		}
-		case "closeKodi":
-		{
-			toExecute = mod_path + 'closeKodi.bat';
-			textTTS = words["kodi_off"];
-			break;
-		}
+		default:
+			return callback({ 'tts': words["error"][0] });
 	}
 
 	var exec = require('child_process').exec;

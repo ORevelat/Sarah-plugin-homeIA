@@ -10,6 +10,9 @@
 	},
 
 	"command" : {
+		"error" : {
+			"0" : "je ne connais pas cette commande"
+		},
 		"kodi_on" : {
 			"0" : "caudi est en train de démarrer",
 			"1" : "caudi démarre",

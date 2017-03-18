@@ -8,36 +8,25 @@ exports.do_cron = function(words, data, callback) {
 };
 
 exports.do_main = function(words, data, callback) {
-	console.log('\x1b[91mmode COMMAND \x1b[0m');
-
 	var pluginProps = Config.modules.homeIA.command;
 
-	var textTTS = new Array;
-	var toExecute = null;
+	console.log('\x1b[91mmode COMMAND\x1b[0m');
 
-	switch (data.cmd)
-	{
-		case "kodi_on":
-		case "kodi_off":
-		{
-			toExecute = mod_path + data.cmd + '.bat';
-			textTTS = words[data.cmd];
-			break;
-		}
-		default:
-			return callback({ 'tts': words["error"][0] });
-	}
-
-	var exec = require('child_process').exec;
-
-	var child = exec(toExecute, function (error, stdout, stder) {
-		console.log(toExecute);
-	});
-
-	if (Object.keys(textTTS).length > 0) {
-		var choice = Math.floor(Math.random() * Object.keys(textTTS).length);
-		callback({'tts': textTTS[choice]});
-	}
-	else
+	if (typeof data.cmd == 'undefined') {
 		callback({});
+		return;
+	}
+	
+	var url = pluginProps.addr + '/run/' + data.cmd;
+
+	var request = require('request');
+	request( { 'uri' : url }, function (err, response, body) {
+		if (err || response.statusCode != 200) {
+			console.log(url + ' code=' + response.statusCode + " err=" + err);
+			callback({'tts': "Désolé, je n'arrive pas à contacter le client"});
+			return;
+		}
+
+		callback({});
+	});
 };

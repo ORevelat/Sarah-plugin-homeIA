@@ -53,10 +53,12 @@ exports.do_main = function(words, data, callback) {
 					var choice = Math.floor(Math.random() * Object.keys(words).length); 
 					toSpeak = words[choice];
 				}
+
+				toSpeak = toSpeak + (data.tts ? (" " + data.tts) : "");
 			 }
 			 else if (data.element === 'temp') {
 			 	var tmp = results[0];
-			 	toSpeak = "la température est de " + tmp.replace('.', ',') + " degrés";
+			 	toSpeak = "la température " + (data.tts ? (data.tts + " ") : "") + "est de " + tmp.replace('.', ',') + " degrés";
 			 }
 
 			callback({ 'tts': toSpeak });

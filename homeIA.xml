@@ -33,7 +33,7 @@
     			</item>
     			<item>
     				<ruleref uri="#PLUGIN_JEEDOM" />
-    				<tag>out.action.mode = "JEEDOM"; out.action.element = rules.PLUGIN_JEEDOM.element; out.action.cmd = rules.PLUGIN_JEEDOM.cmd;</tag>
+    				<tag>out.action.mode = "JEEDOM"; out.action.element = rules.PLUGIN_JEEDOM.element; out.action.cmd = rules.PLUGIN_JEEDOM.cmd; out.action.tts = rules.PLUGIN_JEEDOM.tts;</tag>
     			</item>
     		</one-of>
     	</item>
@@ -77,17 +77,17 @@
 	    <tag>out.check="next";</tag>
 
 	    <one-of>
-	      <item>qu'est ce qui est prévu pour</item>
-	      <item>quelle est le planning pour</item>
-	      <item>quelle est le planning de</item>
-	      <item>donne moi le planning pour</item>
-	      <item>donne moi le planning de</item>
+	      <item>qu'est ce qui est prévu</item>
+	      <item>quel est le planning</item>
+	      <item>donne moi le planning</item>
 	    </one-of>
 
 	    <item repeat="0-1">
 		    <one-of>
-		      <item>aujourd'hui <tag>out.check="today";</tag></item>
-		      <item>demain <tag>out.check="tomorrow";</tag></item>
+		      <item>d'aujourd'hui <tag>out.check="today";</tag></item>
+		      <item>pour aujourd'hui <tag>out.check="today";</tag></item>
+		      <item>de demain <tag>out.check="tomorrow";</tag></item>
+		      <item>pour demain <tag>out.check="tomorrow";</tag></item>
 		    </one-of>
 	    </item>
 	</rule>
@@ -207,6 +207,8 @@
 			<item>Toulouse <tag> out.zip="315550"; </tag></item>
 			<item>Ussèle <tag> out.zip="192750"; </tag></item>
 			<item>Dormelles <tag> out.zip="771610"; </tag></item>
+			<item>Auron <tag> out.zip="061201"; </tag></item>
+			<item>Isola <tag> out.zip="060731"; </tag></item>
 		</one-of>
 	</rule>
 
@@ -222,15 +224,15 @@
 			</item>
 			<item>
 				<ruleref uri="#JEEDOM_ASK"/>
-				<tag>out.element=rules.JEEDOM_ASK.element; out.cmd=rules.JEEDOM_ASK.cmd;</tag>
+				<tag>out.element=rules.JEEDOM_ASK.element; out.cmd=rules.JEEDOM_ASK.cmd; out.tts=rules.JEEDOM_ASK.tts;</tag>
 			</item>
 			<item>
 				<ruleref uri="#JEEDOM_VOLET_UP"/>
-				<tag>out.element=rules.JEEDOM_VOLET_UP.element; out.cmd=rules.JEEDOM_VOLET_UP.cmd;</tag>
+				<tag>out.element=rules.JEEDOM_VOLET_UP.element; out.cmd=rules.JEEDOM_VOLET_UP.cmd; out.tts=rules.JEEDOM_VOLET_UP.tts;</tag>
 			</item>
 			<item>
 				<ruleref uri="#JEEDOM_VOLET_DOWN"/>
-				<tag>out.element=rules.JEEDOM_VOLET_DOWN.element; out.cmd=rules.JEEDOM_VOLET_DOWN.cmd;</tag>
+				<tag>out.element=rules.JEEDOM_VOLET_DOWN.element; out.cmd=rules.JEEDOM_VOLET_DOWN.cmd; out.tts=rules.JEEDOM_VOLET_DOWN.tts;</tag>
 			</item>
 			<item>
 				<ruleref uri="#JEEDOM_VOLET_STOP"/>
@@ -301,13 +303,13 @@
 
 		<item>
 			<one-of>
-				<item>bureau<tag>out.cmd="356";</tag></item>
-				<item>parents<tag>out.cmd="314";</tag></item>
-				<item>théa<tag>out.cmd="318";</tag></item>
-				<item>salon<tag>out.cmd="312";</tag></item>
+				<item>bureau<tag>out.cmd="356";out.tts="dans le bureau";</tag></item>
+				<item>parents<tag>out.cmd="314";out.tts="dans la chambre";</tag></item>
+				<item>théa<tag>out.cmd="318";out.tts="dans la chambre";</tag></item>
+				<item>salon<tag>out.cmd="312";out.tts="du salon";</tag></item>
 				<item>rez de chaussée<tag>out.cmd="231";</tag></item>
-				<item>jardin<tag>out.cmd="322";</tag></item>
-				<item>l'étage<tag>out.cmd="288";</tag></item>
+				<item>jardin<tag>out.cmd="322";out.tts="dans le jardin";</tag></item>
+				<item>l'étage<tag>out.cmd="288";out.tts="de l'étage";</tag></item>
 			</one-of>
 			<tag>out.element="temp";</tag>
 		</item>
@@ -319,12 +321,12 @@
 				<item>
 					<item>ouvre le volet</item>
 					<one-of>
-						<item>de la cuisine<tag>out.cmd="202";</tag></item>
-						<item>de la salle à manger<tag>out.cmd="166";</tag></item>
-						<item>du salon<tag>out.cmd="190";</tag></item>
+						<item>de la cuisine<tag>out.cmd="202";out.tts="ouverture du volet de la cuisine";</tag></item>
+						<item>de la salle à manger<tag>out.cmd="166";out.tts="ouverture du volet de la salle à manger";</tag></item>
+						<item>du salon<tag>out.cmd="190";out.tts="ouverture du volet du salon";</tag></item>
 					</one-of>
 				</item>
-				<item>ouvre les volets de la maison<tag>out.cmd="202;166;190";</tag></item>
+				<item>ouvre les volets de la maison<tag>out.cmd="202;166;190";out.tts="ouverture des volets";</tag></item>
 			</one-of>
 
 			<tag>out.element="volet_up";</tag>
@@ -337,13 +339,13 @@
 				<item>
 					<item>ferme le volet</item>
 					<one-of>
-						<item>de la cuisine<tag>out.cmd="203";</tag></item>
-						<item>de la salle à manger<tag>out.cmd="167";</tag></item>
-						<item>du salon<tag>out.cmd="191";</tag></item>
+						<item>de la cuisine<tag>out.cmd="203";out.tts="fermeture du volet de la cuisine";</tag></item>
+						<item>de la salle à manger<tag>out.cmd="167";out.tts="fermeture du volet de la cuisine";</tag></item>
+						<item>du salon<tag>out.cmd="191";out.tts="fermeture du volet du salon";</tag></item>
 					</one-of>
 				</item>
 
-				<item>ferme les volets de la maison<tag>out.cmd="203;167;191";</tag></item>
+				<item>ferme les volets de la maison<tag>out.cmd="203;167;191";out.tts="fermeture des volets";</tag></item>
 			</one-of>
 
 			<tag>out.element="volet_down";</tag>

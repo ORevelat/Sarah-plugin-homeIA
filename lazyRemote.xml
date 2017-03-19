@@ -1,0 +1,16 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="lazyruleRemote" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+  
+    <rule id="lazyruleRemote" scope="public">
+        <tag>out.action=new Object();</tag>
+
+        <one-of>
+		    <item>Fin du mode télécommande<tag>out.action._attributes.context = "default"; out.action._attributes.tts = "Mode télécommande terminé";</tag></item>
+		    <item>Merci<tag>out.action._attributes.context = "default"; out.action._attributes.tts = "Mode télécommande terminé";</tag></item>
+        </one-of>
+
+        <!--
+        <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/homeIA";</tag>
+        -->
+    </rule>
+
+</grammar>

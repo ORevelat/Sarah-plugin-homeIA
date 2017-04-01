@@ -7,6 +7,7 @@ var mod_joke = require('./mod_joke');
 var mod_weather = require('./mod_weather');
 var mod_jeedom = require('./mod_jeedom');
 var mod_calendar = require('./mod_calendar');
+var mod_remote = require('./mod_remote');
 
 exports.init = function() {
 	console.log('\x1b[96mHomeIA plugin is initializing ... \x1b[0m');
@@ -17,6 +18,7 @@ exports.init = function() {
 	mod_weather.do_init();
 	mod_jeedom.do_init();
 	mod_calendar.do_init();
+	mod_remote.do_init();
 };
 
 exports.dispose  = function() {
@@ -30,6 +32,7 @@ exports.cron = function(callback){
 	mod_weather.do_cron(words["weather"], {}, callback);
 	mod_jeedom.do_cron(words["jeedom"], {}, callback);
 	mod_calendar.do_cron(words["calendar"], {}, callback);
+	mod_remote.do_cron(words["remote"], {}, callback);
 }
 
 exports.action = function(data, callback) {
@@ -45,6 +48,8 @@ exports.action = function(data, callback) {
 		return mod_jeedom.do_main(words["jeedom"], data, callback);
 	else if ( data.mode && (data.mode == "CALENDAR"))
 		return mod_calendar.do_main(words["calendar"], data, callback);
+	else if ( data.mode && (data.mode == "REMOTE"))
+		return mod_remote.do_main(words["remote"], data, callback);
 
 	callback({ 
 		'tts': commandError() 

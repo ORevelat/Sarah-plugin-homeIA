@@ -1,1 +1,0 @@
-start C:\"Program Files\Kodi\Kodi.exe"

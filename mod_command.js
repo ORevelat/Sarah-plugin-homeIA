@@ -21,12 +21,19 @@ exports.do_main = function(words, data, callback) {
 
 	var request = require('request');
 	request( { 'uri' : url }, function (err, response, body) {
-		if (err || response.statusCode != 200) {
-			console.log(url + ' code=' + response.statusCode + " err=" + err);
+		if (err || (response && response.statusCode != 200)) {
+			console.log(url + ' code=' + (response ? response.statusCode : -1) + " err=" + err);
 			callback({'tts': "Désolé, je n'arrive pas à contacter le client"});
 			return;
 		}
 
-		callback({});
+		var toSpeak = '';
+
+		if (Object.keys(words[data.cmd]).length > 0) {
+			var choice = Math.floor(Math.random() * Object.keys(words[data.cmd]).length); 
+			toSpeak = words[data.cmd][choice];
+		}
+
+		callback({ 'tts': toSpeak });
 	});
 };

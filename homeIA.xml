@@ -13,32 +13,34 @@
     		<one-of>
     			<item>
 					<ruleref uri="#PLUGIN_TIME" />
-					<tag>out.action.mode = "TIME"; out.action.cmd = rules.PLUGIN_TIME.cmd;</tag>
+					<tag>out.action.mode = "TIME"; out.action.cmd = rules.PLUGIN_TIME.cmd; out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
     			</item>
     			<item>
     				<ruleref uri="#PLUGIN_COMMAND" />
-    				<tag>out.action.mode = "COMMAND"; out.action.cmd = rules.PLUGIN_COMMAND.cmd</tag>
+    				<tag>out.action.mode = "COMMAND"; out.action.cmd = rules.PLUGIN_COMMAND.cmd; out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
     			</item>
     			<item>
     				<ruleref uri="#PLUGIN_JOKE" />
-    				<tag>out.action.mode = "JOKE";</tag>
+    				<tag>out.action.mode = "JOKE"; out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
     			</item>
     			<item>
 					<ruleref uri="#PLUGIN_CALENDAR" />
-					<tag>out.action.mode = "CALENDAR"; out.action.cmd = rules.PLUGIN_CALENDAR.cmd; out.action.check = rules.PLUGIN_CALENDAR.check;</tag>
+					<tag>out.action.mode = "CALENDAR"; out.action.cmd = rules.PLUGIN_CALENDAR.cmd; out.action.check = rules.PLUGIN_CALENDAR.check; out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
 				</item>
     			<item>
     				<ruleref uri="#PLUGIN_WEATHER" />
-    				<tag>out.action.mode = "WEATHER"; out.action.date = rules.PLUGIN_WEATHER.date; out.action.period = rules.PLUGIN_WEATHER.period; out.action.zip = rules.PLUGIN_WEATHER.zip;</tag>
+    				<tag>out.action.mode = "WEATHER"; out.action.date = rules.PLUGIN_WEATHER.date; out.action.period = rules.PLUGIN_WEATHER.period; out.action.zip = rules.PLUGIN_WEATHER.zip; out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
     			</item>
     			<item>
     				<ruleref uri="#PLUGIN_JEEDOM" />
-    				<tag>out.action.mode = "JEEDOM"; out.action.element = rules.PLUGIN_JEEDOM.element; out.action.cmd = rules.PLUGIN_JEEDOM.cmd; out.action.tts = rules.PLUGIN_JEEDOM.tts;</tag>
+    				<tag>out.action.mode = "JEEDOM"; out.action.element = rules.PLUGIN_JEEDOM.element; out.action.cmd = rules.PLUGIN_JEEDOM.cmd; out.action.tts = rules.PLUGIN_JEEDOM.tts; out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
     			</item>
-    		</one-of>
+				<item>
+					<ruleref uri="#PLUGIN_REMOTE" />
+					<tag>out.action._attributes.context = "lazyRemote"; out.action._attributes.tts = "Mode télécommande activé";</tag>
+				</item>
+			</one-of>
     	</item>
-
-	    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/homeIA";</tag>
 	</rule>
 
 	<rule id="PLUGIN_TIME" scope="public">
@@ -150,7 +152,14 @@
 			</one-of>
 		</item>
 	</rule>
-		
+
+	<rule id="PLUGIN_REMOTE" scope="public">
+		<one-of>
+			<item>passe en mode télécommande</item>
+			<item>mode télécommande</item>
+		</one-of>
+	</rule>
+
 	<rule id="WEATHER_TRASH" scope="public">
 		<one-of>
 			<item>à</item>
@@ -340,7 +349,7 @@
 					<item>ferme le volet</item>
 					<one-of>
 						<item>de la cuisine<tag>out.cmd="203";out.tts="fermeture du volet de la cuisine";</tag></item>
-						<item>de la salle à manger<tag>out.cmd="167";out.tts="fermeture du volet de la cuisine";</tag></item>
+						<item>de la salle à manger<tag>out.cmd="167";out.tts="fermeture du volet de la salle à manger";</tag></item>
 						<item>du salon<tag>out.cmd="191";out.tts="fermeture du volet du salon";</tag></item>
 					</one-of>
 				</item>

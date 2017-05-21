@@ -1,0 +1,19 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rootTime" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+	<rule id="rootTime" scope="public">
+		<tag>out.mode = "TIME";</tag>
+
+	    <one-of>
+			<item>il est quelle heure <tag>out.cmd = "time";</tag></item>
+			<item>quelle heure est il <tag>out.cmd = "time";</tag></item>
+			<item>quel jour sommes-nous <tag>out.cmd = "date";</tag></item>
+			<item>nous sommes quel jour <tag>out.cmd = "date";</tag></item>
+			<item>quelle est la date <tag>out.cmd = "date";</tag></item>
+			<item>donne moi la date <tag>out.cmd = "date";</tag></item>
+	    	<item>en quelle semaine sommes nous <tag>out.cmd = "week_today";</tag></item>
+	    	<item>nous sommes en quelle semaine <tag>out.cmd = "week_today";</tag></item>
+	    	<item>nous serons en quelle semaine demain <tag>out.cmd = "week_tomorrow";</tag></item>
+	    </one-of>
+	</rule>
+
+</grammar>

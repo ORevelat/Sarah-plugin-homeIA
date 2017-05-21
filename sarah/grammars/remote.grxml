@@ -1,0 +1,10 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rootRemote" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+	<rule id="rootRemote" scope="public">
+		<one-of>
+			<item>passe en mode télécommande</item>
+			<item>mode télécommande</item>
+		</one-of>
+	</rule>
+
+</grammar>

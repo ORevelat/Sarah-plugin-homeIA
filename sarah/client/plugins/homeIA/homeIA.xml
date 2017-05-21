@@ -1,0 +1,45 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rootHomeIA" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+   	<rule id="rootHomeIA" scope="public">
+    	<tag>out.action=new Object();</tag>
+
+        <item>SARAH</item>
+   	    <item>s'il te plait</item>
+
+        <item>
+            <one-of>
+                <item>
+                    <ruleref uri="C:\Domotique\sarah\grammars\time.grxml" />
+					<tag>out.action.params = rules.latest(); out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
+                </item>
+                <item>
+    				<ruleref uri="C:\Domotique\sarah\grammars\command.grxml" />
+					<tag>out.action.params = rules.latest(); out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
+    			</item>
+                <item>
+    				<ruleref uri="C:\Domotique\sarah\grammars\joke.grxml" />
+					<tag>out.action.params = rules.latest(); out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
+    			</item>
+        		<item>
+					<ruleref uri="C:\Domotique\sarah\grammars\calendar.grxml" />
+					<tag>out.action.params = rules.latest(); out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
+				</item>
+				<item>
+    				<ruleref uri="C:\Domotique\sarah\grammars\weather.grxml" />
+					<tag>out.action.params = rules.latest(); out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
+    			</item>
+				<item>
+					<ruleref uri="C:\Domotique\sarah\grammars\remote.grxml" />
+					<tag>out.action._attributes.context = "lazyRemote"; out.action._attributes.tts = "Mode télécommande activé";</tag>
+				</item>
+    			<item>
+    				<ruleref uri="C:\Domotique\sarah\grammars\jeedom.grxml" />
+ 					<tag>out.action.params = rules.latest(); out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
+   			</item>
+            </one-of>
+
+        </item>
+
+    </rule>
+
+</grammar>

@@ -1,0 +1,47 @@
+{
+	"error" : {
+		"0" : "je ne connais pas cette commande",
+		"1" : "cette commande m'est inconnue",
+		"2" : "je ne comprend pas cette commande"
+	},
+
+	"time" : {
+
+	},
+
+	"command" : {
+		"kodi_on" : {
+			"0" : "caudi est en train de démarrer",
+			"1" : "caudi démarre",
+			"2" : "très bien",
+			"3" : "compris"
+		},
+		"kodi_off" : {
+			"0" : "je l'éteins",
+			"1" : "compris"
+		}
+	},
+
+	"joke": {
+
+	},
+
+	"weather" : {
+
+	},
+
+	"jeedom" : {
+		"0" : "voila",
+		"1" : "c'est fait",
+		"2" : "très bien",
+		"3" : "oui"
+	},
+
+	"calendar" : {
+		
+	},
+
+	"remote" : {
+		
+	}
+}

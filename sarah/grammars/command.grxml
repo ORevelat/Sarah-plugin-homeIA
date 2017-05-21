@@ -1,0 +1,13 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rootCommand" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+	<rule id="rootCommand" scope="public">
+		<tag>out.mode = "COMMAND";</tag>
+
+		<one-of>
+			<item>lance CAUDI<tag>out.cmd = "kodi_on";</tag></item>
+			<item>démarre CAUDI<tag>out.cmd = "kodi_on";</tag></item>
+			<item>arrête CAUDI<tag>out.cmd = "kodi_off";</tag></item>
+		</one-of>
+	</rule>
+
+</grammar>

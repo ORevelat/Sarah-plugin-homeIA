@@ -1,0 +1,24 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rootCalendar" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+	<rule id="rootCalendar" scope="public">
+			<tag>out.mode = "CALENDAR";</tag>
+	    <tag>out.cmd = "PLANNING";</tag>
+	    <tag>out.check = "next";</tag>
+
+	    <one-of>
+	      <item>qu'est ce qui est prévu</item>
+	      <item>quel est le planning</item>
+	      <item>donne moi le planning</item>
+	    </one-of>
+
+	    <item repeat="0-1">
+		    <one-of>
+		      <item>d'aujourd'hui <tag>out.check="today";</tag></item>
+		      <item>pour aujourd'hui <tag>out.check="today";</tag></item>
+		      <item>de demain <tag>out.check="tomorrow";</tag></item>
+		      <item>pour demain <tag>out.check="tomorrow";</tag></item>
+		    </one-of>
+	    </item>
+	</rule>
+
+</grammar>

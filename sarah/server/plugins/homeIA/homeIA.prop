@@ -1,0 +1,72 @@
+{
+	"cron" : {
+		"homeIA" : { 
+		  "name"       : "homeIA",
+		  "description": "Vérification toutes les 5 minutes",
+		  "time"       : "0 */5 * * * *"
+		}
+	},
+
+	"modules" : { 
+		"homeIA"  : {
+			"description": "Plugin HomeIA - l'IA de la maison - SARAH",
+			"version"	 : "1.0",
+
+			"time"		 : {
+
+			},
+
+			"calendar"   : {
+
+				"calendars" : [
+					{
+						"id"            : "",
+						"secret"        : "",
+						"clientid"      : "",
+						"redirect_uris" : "",
+
+						"access_token"  : "",
+						"token_type"    : "",
+						"refresh_token" : "",
+						"expiry_date"   : ""
+					},
+					{
+						"id"            : "",
+						"secret"        : "",
+						"clientid"      : "",
+						"redirect_uris" : "",
+
+						"access_token"  : "",
+						"token_type"    : "",
+						"refresh_token" : "",
+						"expiry_date"   : ""
+					}
+				]
+				
+			},
+
+			"jeedom"	 : {
+				"addr"    	: "",
+				"apikey"  	: ""
+			},
+
+			"joke"		 : {
+				"max_id"	: "2250"
+			},
+
+			"weather"	 : {
+				"zip"		: "060070",
+				"date"		: "0"
+			},
+
+			"command"	 : {
+				"addr"		: ""
+			},
+
+			"remote"	 : {
+				"addr"		: ""
+			}
+
+		}
+	}
+}

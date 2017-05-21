@@ -1,0 +1,14 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rootJoke" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+	<rule id="rootJoke" scope="public">
+		<tag>out.mode = "JOKE";</tag>
+
+		<one-of>
+			<item>raconte une blague</item>
+			<item>raconte moi une blague</item>
+			<item>raconte nous une blague</item>
+			<item>une autre blague</item>
+		</one-of>
+	</rule>
+
+</grammar>

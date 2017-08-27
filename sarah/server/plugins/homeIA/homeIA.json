@@ -43,5 +43,13 @@
 
 	"remote" : {
 		
+	},
+
+	"squezebox" : {
+		"0" : "voila",
+		"1" : "c'est fait",		
+		"2" : "très bien",
+		"3" : "oui"
 	}
+
 }

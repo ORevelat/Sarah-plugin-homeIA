@@ -65,6 +65,13 @@
 
 			"remote"	 : {
 				"addr"		: ""
+			},
+
+			"squeezebox"	 : {
+				"salon" : {
+					"addr"		: "",
+					"port"		: ""
+				}
 			}
 
 		}

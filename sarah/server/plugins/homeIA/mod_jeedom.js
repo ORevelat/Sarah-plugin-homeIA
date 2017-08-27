@@ -13,12 +13,12 @@ exports.do_main = function(words, data, callback) {
 	var pluginProps = Config.modules.homeIA.jeedom;
 	if (!pluginProps.addr) {
 		console.log("Missing Jeedom address config in prop file");
-		next({'tts' : 'Configuration invalide'});
+		callback({'tts' : 'Configuration invalide'});
 		return;
 	}
 	else if (!pluginProps.apikey) {
 		console.log("Missing Jeedom API key config in prop file");
-		next({'tts' : 'Configuration invalide'});
+		callback({'tts' : 'Configuration invalide'});
 		return;
 	}
 

@@ -35,7 +35,11 @@
     			<item>
     				<ruleref uri="C:\Domotique\sarah\grammars\jeedom.grxml" />
  					<tag>out.action.params = rules.latest(); out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
-   			</item>
+   				</item>
+    			<item>
+    				<ruleref uri="C:\Domotique\sarah\grammars\squeeze.grxml" />
+ 					<tag>out.action.params = rules.latest(); out.action._attributes.uri="http://192.168.254.221:8080/sarah/homeIA";</tag>
+   				</item>
             </one-of>
 
         </item>

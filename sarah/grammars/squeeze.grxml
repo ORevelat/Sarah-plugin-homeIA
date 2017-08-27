@@ -1,0 +1,35 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rootSqueeze" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+	<rule id="rootSqueeze" scope="public">
+		<tag>out.mode = "SQUEEZEBOX";</tag>
+        <tag>out.periph="SqueezeliteSalon";</tag>
+        
+		<one-of>
+			<item>allume la squeezebox<tag>out.cmd="poweron";</tag></item>
+			<item>démarre la squeezebox<tag>out.cmd="poweron";</tag></item>
+		    <item>éteint la squeezebox<tag>out.cmd="poweroff";</tag></item>
+		    <item>arrête la squeezebox<tag>out.cmd="poweroff";</tag></item>
+
+            <item>lance la musique<tag>out.cmd="play";</tag></item>
+            <item>joue la musique<tag>out.cmd="play ";</tag></item>
+		    <item>mets en pause la musique<tag>out.cmd="pause";</tag></item>
+		    <item>arrête la musique<tag>out.cmd="pause";</tag></item>
+            
+            <item>monte le son de la musique<tag>out.cmd="setVolume";out.params="10";</tag></item>
+		    <item>baisse le son de la musique<tag>out.cmd="setVolume";out.params="-10";</tag></item>
+            <item>monte beaucoup le son de la musique<tag>out.cmd="setVolume";out.params="20";</tag></item>
+		    <item>baisse beaucoup le son de la musique<tag>out.cmd="setVolume";out.params="-20";</tag></item>
+
+            <item>chanson suivante<tag>out.cmd="next";</tag></item>
+    		<item>chanson précédente<tag>out.cmd="previous";</tag></item>
+            
+            <item>quel est le morceau<tag>out.cmd="getCurrentTitle";</tag></item>
+            <item>quel est ce morceau<tag>out.cmd="getCurrentTitle";</tag></item>
+            <item>quel est le titre<tag>out.cmd="getCurrentTitle";</tag></item>
+            <item>quel est ce titre<tag>out.cmd="getCurrentTitle";</tag></item>
+            <item>donne moi le titre de la chanson<tag>out.cmd="getCurrentTitle";</tag></item>
+            <item>quelle est cette chanson<tag>out.cmd="getCurrentTitle";</tag></item>
+		</one-of>
+	</rule>
+
+</grammar>

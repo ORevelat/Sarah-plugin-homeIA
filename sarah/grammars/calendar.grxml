@@ -6,7 +6,6 @@
 	    <tag>out.check = "next";</tag>
 
 	    <one-of>
-	      <item>qu'est ce qui est prévu</item>
 	      <item>quel est le planning</item>
 	      <item>donne moi le planning</item>
 	    </one-of>

@@ -43,9 +43,9 @@ exports.do_main = function(words, data, callback) {
 	);
 };
 
-var request = require("request");
-
 var sendCommand = function(url, callback) {
+	var request = require("request");
+
 	request(url, function (err, response, body) { 
 		if (err || (response && response.statusCode != 200))
 			console.log(url + ' code=' + (response ? response.statusCode : -1) + " err=" + err);

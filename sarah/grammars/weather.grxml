@@ -22,11 +22,6 @@
 					</item>
 
 					<item repeat="0-1">
-						<ruleref uri="#WEATHER_PERIOD"/>
-						<tag>out.period=rules.WEATHER_PERIOD.period</tag>
-					</item>
-
-					<item repeat="0-1">
 						<ruleref uri="#WEATHER_TRASH"/>
 					</item>
 
@@ -49,11 +44,6 @@
 					<item repeat="0-1">
 						<ruleref uri="#WEATHER_DATE"/>
 						<tag>out.date=rules.WEATHER_DATE.date</tag>
-					</item>
-
-					<item repeat="0-1">
-						<ruleref uri="#WEATHER_PERIOD"/>
-						<tag>out.period=rules.WEATHER_PERIOD.period</tag>
 					</item>
 				</item>
 				
@@ -87,38 +77,25 @@
 		</one-of>
 	</rule>
 
-	<rule id="WEATHER_PERIOD" scope="public">
-		<one-of>
-			<item>matin<tag>out.period="morn";</tag></item>
-			<item>en ce moment<tag>out.period="day";</tag></item>
-			<item>dans la journée<tag>out.period="day";</tag></item>
-			<item>après-midi<tag>out.period="day";</tag></item>
-			<item>ce soir<tag>out.period="eve";</tag></item>
-			<item>soir<tag>out.period="eve";</tag></item>
-			<item>cette nuit<tag>out.period="night";</tag></item>
-			<item>dans la nuit<tag>out.period="night";</tag></item>
-		</one-of>
-	</rule>
-
 	<rule id="WEATHER_ZIP" scope="public">
 		<one-of>
-			<item>Auribeau <tag> out.zip="060070"; </tag></item>
-			<item>Auribeau sur Siagne <tag> out.zip="060070"; </tag></item>
-			<item>la maison <tag> out.zip="060070"; </tag></item>
-			<item>Bordeaux <tag> out.zip="330630"; </tag></item>
-			<item>Brest <tag> out.zip="290190"; </tag></item>
-			<item>Cruzy <tag> out.zip="340920"; </tag></item>
-			<item>Lyon <tag> out.zip="691230"; </tag></item>
-			<item>Marseille <tag> out.zip="130550"; </tag></item>
-			<item>Nisse <tag> out.zip="060880"; </tag></item>
-			<item>Nantes <tag> out.zip="441090"; </tag></item>
-			<item>Paris <tag> out.zip="750560"; </tag></item>
-			<item>Strasbourg <tag> out.zip="674820"; </tag></item>
-			<item>Toulouse <tag> out.zip="315550"; </tag></item>
-			<item>Ussèle <tag> out.zip="192750"; </tag></item>
-			<item>Dormelles <tag> out.zip="771610"; </tag></item>
-			<item>Auron <tag> out.zip="061201"; </tag></item>
-			<item>Isola <tag> out.zip="060731"; </tag></item>
+			<item>Auribeau <tag> out.zip="auribeau sur siagne, fr"; </tag></item>
+			<item>Auribeau sur Siagne <tag> out.zip="auribeau sur siagne, fr"; </tag></item>
+			<item>la maison <tag> out.zip="auribeau sur siagne, fr"; </tag></item>
+			<item>Bordeaux <tag> out.zip="bordeaux, fr"; </tag></item>
+			<item>Brest <tag> out.zip="brest, fr"; </tag></item>
+			<item>Cruzy <tag> out.zip="cruzy, fr"; </tag></item>
+			<item>Lyon <tag> out.zip="lyon, fr"; </tag></item>
+			<item>Marseille <tag> out.zip="marseille, fr"; </tag></item>
+			<item>Nisse <tag> out.zip="nice, fr"; </tag></item>
+			<item>Nantes <tag> out.zip="nantes, fr"; </tag></item>
+			<item>Paris <tag> out.zip="paris, fr"; </tag></item>
+			<item>Strasbourg <tag> out.zip="strasbourg, fr"; </tag></item>
+			<item>Toulouse <tag> out.zip="toulouse, fr"; </tag></item>
+			<item>Ussèle <tag> out.zip="ussel, fr"; </tag></item>
+			<item>Dormelles <tag> out.zip="dormelles, fr"; </tag></item>
+			<item>Auron <tag> out.zip="auron, fr"; </tag></item>
+			<item>Isola <tag> out.zip="isola 2000, fr"; </tag></item>
 		</one-of>
 	</rule>
 

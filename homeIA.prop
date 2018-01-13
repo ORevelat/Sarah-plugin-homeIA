@@ -55,8 +55,8 @@
 			},
 
 			"weather"	 : {
-				"zip"		: "060070",
-				"date"		: "0"
+				"zip"		: "auribeau sur siagne, fr",
+				"date"		: "-1"
 			},
 
 			"command"	 : {

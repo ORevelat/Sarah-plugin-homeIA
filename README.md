@@ -14,9 +14,8 @@ L'IA de la maison avec différent mode
   - cron toutes les 5 minutes pour évènements à venir
   - planing du jour ou du lendemain
 * weather
-  - utilisation de www.meteo-france.mobi
+  - utilisation de yahooapi
   - météo du jour, lendemain, sur lendemain, jour X de la semaine
-  - météo pour le matin, journée, soit, nuit
 * jeedom
   - envoi de commande au jeedom de la maison
   - ouverture et fermeture des volets roulants (individuellement ou groupés)
